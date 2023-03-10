@@ -82,3 +82,6 @@ C -- true --> E[Write str is a Palindrome]
 end
 C -.-> isPalindrome
 ```
+
+Output can be view by using the [mermaid Live Editor](https://mermaid.live/) or 
+[the mermaid cli](https://github.com/mermaid-js/mermaid-cli) or rendered in a github README.
