@@ -1,5 +1,5 @@
 # pyflow
-An experiment in compiling flowcharts() in docstrings together.
+An experiment in compiling flowcharts(mermaid) in docstrings together.
 
 Example:
 for the given file palindrome.py
