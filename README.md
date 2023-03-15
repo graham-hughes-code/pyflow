@@ -17,7 +17,7 @@ def isPalindrome(str):
     Boolean: True if the str is a Palindrome
 
   flowchart:
-    S[revers input str] --> X{reversed_str == str}
+    S[reverse input str] --> X{reversed_str == str}
     X -- true --> N[return True]
     X -- false --> M[return False]
   """
@@ -54,7 +54,7 @@ The output will be:
 ```
 flowchart TD
 subgraph isPalindrome
-S[revers input str] --> X{reversed_str == str}
+S[reverse input str] --> X{reversed_str == str}
 X -- true --> N[return True]
 X -- false --> M[return False]
 end
@@ -70,7 +70,7 @@ C -.-> isPalindrome
 ```mermaid
 flowchart TD
 subgraph isPalindrome
-S[revers input str] --> X{reversed_str == str}
+S[reverse input str] --> X{reversed_str == str}
 X -- true --> N[return True]
 X -- false --> M[return False]
 end
