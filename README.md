@@ -1,6 +1,8 @@
 # pyflow
 An experiment in compiling flowcharts(mermaid) in docstrings together.
 
+All text after `flowchart:` should be [mermaid flowchart syntax](https://mermaid.js.org/syntax/flowchart.html).
+
 Example:
 for the given file palindrome.py
 ```python
