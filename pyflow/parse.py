@@ -1,9 +1,11 @@
 import ast
-import re
+
 
 def pull_doc_string_from_file(file_name):
   '''
   Pulls docstring from functions in file
+
+  FIXME: does not pull docstrings from classes or class functions
 
   Args:
     file_name (str): The name of the file to pull from.
@@ -60,9 +62,9 @@ def find_mermaid_from_docstring(docstring):
       string: return string if found None if not found
   '''
 
-  if not 'flowchart:' in docstring:
+  if 'flowchart:' not in docstring:
     return None
-  
+
   flowchart = docstring.split('flowchart:')[1]
 
   flowchart = '\n'.join(line.strip(' \n\t') for line in flowchart.split('\n'))
@@ -77,9 +79,9 @@ def build_full_chart(mermaid_map, orientation):
   Args:
     mermaid_map (Dict): function name: flow chart
     orientation (str): the orientation of the chart
-  
+
   Returns:
-    complied flow char
+    complied flow chart
   '''
 
   header = f'flowchart {orientation}\n'
@@ -94,7 +96,7 @@ def build_full_chart(mermaid_map, orientation):
     for line in fc.splitlines():
       skip_line = False
       for function_name in function_names:
-        if function_name in line and not f'{function_name}()' in line:
+        if function_name in line and f'{function_name}()' not in line:
           skip_line = True
           function_joins.append(line)
       if not skip_line:
