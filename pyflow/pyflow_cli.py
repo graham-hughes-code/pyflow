@@ -1,10 +1,14 @@
 from pyflow.parse import pull_doc_string_from_file, create_mermaid_map, build_full_chart
 import argparse
+import os
+from fnmatch import fnmatch
+
+root = '/some/directory'
 
 
 def main():
   parser = argparse.ArgumentParser()
-  parser.add_argument('path', nargs='*', help='The path of the file to pull flowchart from.')
+  parser.add_argument('path', nargs='*', help='The path of the file(\'s) to pull flowchart from.')
   parser.add_argument('-o',
                       '--orientation',
                       default='TB',
@@ -27,7 +31,27 @@ def main():
     print(f'Error: {args.orientation} is not a valid orientation.')
     return 1
 
-  func_name_to_docstring_map = pull_doc_string_from_file(path)
+  if os.path.isdir(path):
+    files = []
+    pattern = "*.py"
+    for c_path, subdirs, c_files in os.walk(path):
+        for name in c_files:
+          if fnmatch(name, pattern):
+            files.append(os.path.join(c_path, name))
+    func_name_to_docstring_map = {}
+    for f in files:
+      func_name_to_docstring_map = {**pull_doc_string_from_file(f),
+                                    **func_name_to_docstring_map}
+
+  elif os.path.isfile(path):
+    func_name_to_docstring_map = pull_doc_string_from_file(path)
+  else:
+     print('Error: there was a problem with the path entered.')
+     return 1
+  
+  if not func_name_to_docstring_map:
+    print('Error: no flowcharts in docstrings')
+    return 1
 
   mermaid_map = create_mermaid_map(func_name_to_docstring_map)
 

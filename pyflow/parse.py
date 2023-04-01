@@ -62,6 +62,9 @@ def find_mermaid_from_docstring(docstring):
       string: return string if found None if not found
   '''
 
+  if not docstring:
+    return None
+
   if 'flowchart:' not in docstring:
     return None
 
