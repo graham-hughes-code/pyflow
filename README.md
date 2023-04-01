@@ -36,7 +36,7 @@ def main():
     B --> C[Check if Palindrome]
     C -.-> isPalindrome
     C -- true --> D[Write str is a Palindrome]
-    C -- true --> E[Write str is a Palindrome]
+    C -- false --> E[Write str is not a Palindrome]
   """
   s = input('Enter string\n')
   ans = isPalindrome(s)
@@ -64,7 +64,7 @@ subgraph main
 A((Start)) --> B[\Get user input\]
 B --> C[Check if Palindrome]
 C -- true --> D[Write str is a Palindrome]
-C -- true --> E[Write str is a Palindrome]
+C -- false --> E[Write str is not a Palindrome]
 end
 C -.-> isPalindrome
 ```
@@ -80,7 +80,7 @@ subgraph main
 A((Start)) --> B[\Get user input\]
 B --> C[Check if Palindrome]
 C -- true --> D[Write str is a Palindrome]
-C -- true --> E[Write str is a Palindrome]
+C -- false --> E[Write str is not a Palindrome]
 end
 C -.-> isPalindrome
 ```
